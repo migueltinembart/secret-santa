@@ -1,11 +1,17 @@
-import express from "express"
+import express from "express";
+import dotenv from "dotenv";
 
-const app = express()
+dotenv.config();
+
+const mongoDB = process.env.MONGO;
+const port = process.env.PORT;
+
+const app = express();
 
 app.get("/", (req, res, next) => {
-    res.send("express Server started successfully")
-})
+  res.send("express Server started successfully");
+});
 
-app.listen("5000", () => {
-    console.log("app listening on http://localhost" + 5000)
-})
+app.listen(port, () => {
+  console.log("app listening on http://localhost:" + 5000);
+});
