@@ -35,10 +35,9 @@ export function createPersonGraph(
 }
 
 // push node to list if it is not already inside of array, if it
-export function SecretSanta<T>(
-  map: Map<T, Array<T>>,
-  list: Map<T, T> | undefined = new Map<T, T>()
-): Map<T, T> | undefined {
+export function SecretSanta<T>(map: Map<T, Array<T>>): Map<T, T> | undefined {
+  if (typeof map === undefined) return undefined;
+  const list = new Map<T, T>();
   const first: T = map.values().next().value;
   const array: T[] = [];
   map.forEach((value, key, copy) => {
