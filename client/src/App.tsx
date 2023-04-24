@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Box from "./components/Box";
-import { secretSantaCodeStore } from "./state/formState";
+import { secretSantaCodeStore } from "./store/formState";
 function App() {
   const code = secretSantaCodeStore((state) => state.code);
   return (
