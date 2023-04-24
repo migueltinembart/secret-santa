@@ -1,23 +1,13 @@
-import { ReactNode, useState } from "react";
-import Box from "./components/Box";
-import { useStore } from "./store/codeLoginStore";
-import { fetchFromFormGet } from "./lib/fetchHandlers/fetchFromFormAction";
-
-interface Person {
-  id: Number;
-  firstName: String;
-  lastName: String;
-  email: String;
-}
-interface SecretSantaGroup {
-  id: Number;
-  people: Person[];
-}
+import { useState } from "react";
+import Box from "../components/Box";
+import { useStore } from "../store/codeLoginStore";
+import { fetchFromFormGet } from "../lib/fetchHandlers/fetchFromFormAction";
+import type { SecretSantaGroup } from "../types/identification";
 
 function App() {
   const changeCode = useStore((state) => state.changeCode);
   const code = useStore((state) => state.code);
-  const [test, setTest] = useState<SecretSantaGroup>({
+  const [secretSantaGroup, setSecretSantaGroup] = useState<SecretSantaGroup>({
     id: 0,
     people: [],
   });
@@ -30,7 +20,9 @@ function App() {
             action="api/data"
             method="get"
             className="flex flex-col justify-start"
-            onSubmit={async (e) => setTest(await fetchFromFormGet(e))}
+            onSubmit={async (e) =>
+              setSecretSantaGroup(await fetchFromFormGet(e))
+            }
           >
             <label htmlFor="secret-santa-codebox">
               Paste your secret santa code here...
@@ -48,10 +40,15 @@ function App() {
             ></input>
             <br />
             <input type="submit" value="Submit" className="hover:bg-red-200" />
-            <div>{test.id != 0 && test.people.map((person) => (<div>{person.firstName}</div>))}</div>
+            <div>
+              {secretSantaGroup.id != 0 &&
+                secretSantaGroup.people.map((person) => (
+                  <div>{person.firstName}</div>
+                ))}
+            </div>
           </form>
           <form
-            action="/register"
+            action="/api/register"
             method="post"
             className="flex flex-col gap-1"
           >
