@@ -1,10 +1,13 @@
-import {} from "react";
 import classnames from "classnames";
 import { ReactNode } from "react";
 
+
 interface Props {
   children?: ReactNode;
-  split?: Boolean;
+  grid?: Boolean;
+  cols?: Number;
+  rows?: Number;
+  className?: String[];
 }
 export default function Box(props: Props) {
   const classes = classnames(
@@ -17,7 +20,13 @@ export default function Box(props: Props) {
     "border",
     "border-gray-400",
     "p-4",
-     props.split && ["grid", "grid-rows-1 grid-cols-2", ""]
+    props.grid && "grid gap-4 content-center",
+    props.cols && `grid-cols-${props.cols}`,
+    props.rows && `grid-rows-${props.rows}`
   );
-  return <div className={classes}>{props.children}</div>;
+  return (
+    <>
+      <div className={classes}>{props.children}</div>
+    </>
+  );
 }
