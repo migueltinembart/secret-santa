@@ -1,3 +1,5 @@
+import Divider from "../components/base/Divider";
+
 export default function Home() {
-    return <>Home</>
+    return <Divider></Divider>
 }
