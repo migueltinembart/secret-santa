@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { themeChange } from "theme-change";
-import NavBar from "../components/NavBar";
+import NavBar from "./components/NavBar";
 import { Outlet } from "react-router-dom";
-import Content from "../components/Content";
+import Content from "./components/Content";
 
 function App() {
   useEffect(() => {

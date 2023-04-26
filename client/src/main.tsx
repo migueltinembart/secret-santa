@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./routes/App";
+import App from "./App";
 import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ErrorPage from "./routes/error-page";
@@ -20,7 +20,7 @@ const clientRouter = createBrowserRouter([
       },
       {
         path: "groups",
-        element: <Groups />
+        element: <Groups />,
       },
     ],
   },
