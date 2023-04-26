@@ -1,13 +1,14 @@
-
+import classes from "classnames"
 import { Link } from "react-router-dom";
 
+const navBarClasses = classes("bg-base-200", "shadow-md", "rounded-md", "mb-4")
 interface Config {
   themes: String;
 }
 
 export default function NavBar(props: Config) {
   return (
-    <div className="navbar bg-base-100 shadow-md rounded-md mb-4">
+    <div className={`navbar ${navBarClasses}`}>
       <div className="navbar-start">
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost btn-circle">
