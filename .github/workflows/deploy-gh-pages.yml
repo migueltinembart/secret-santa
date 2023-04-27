@@ -10,6 +10,9 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./client/
 
     strategy:
       matrix:
@@ -22,10 +25,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
-          cache-dependency-path: client/package-lock.json
+          cache-dependency-path: ./client/package-lock.json
           
       - run: npm --prefix ./client ci
-      - run: npm run build:client --if-present
+      - run: npm run build:client:action --if-present
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
